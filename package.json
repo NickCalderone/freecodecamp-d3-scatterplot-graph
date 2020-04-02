@@ -1,0 +1,26 @@
+{
+  "name": "scatterplot-graph",
+  "version": "1.0.0",
+  "description": "freecodecamp data visualization scatterplot graph challenge",
+  "main": "index.html",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NickCalderone/d3-scatterplot-graph.git"
+  },
+  "keywords": [
+    "freecodecamp",
+    "d3"
+  ],
+  "author": "nick calderone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NickCalderone/d3-scatterplot-graph/issues"
+  },
+  "homepage": "https://github.com/NickCalderone/d3-scatterplot-graph#readme",
+  "dependencies": {
+    "d3": "^5.15.1"
+  }
+}

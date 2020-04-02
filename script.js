@@ -19,7 +19,7 @@ d3.json('https://pomber.github.io/covid19/timeseries.json', (error, response) =>
           .domain([d3.min(dataUs, d => new Date(d['date'])), d3.max(dataUs, d => new Date(d['date']))])
           .range([padding, w - padding])
      const yScale = d3.scaleLinear()
-          .domain([d3.min(dataUs, d => d['confirmed']), d3.max(dataUs, d => d['confirmed'])])
+          .domain([0 , d3.max(dataUs, d => d['confirmed'])])
           .range([h - padding, padding])
           console.log(yScale(1), yScale(5000), yScale(100000))
      svg
@@ -29,7 +29,7 @@ d3.json('https://pomber.github.io/covid19/timeseries.json', (error, response) =>
           .append('rect')
           .attr('width', barWidth)
           .attr('height', d => h - padding - yScale(d))
-          .attr('x', (d,i) => padding + barWidth * i)
+          .attr('x', (d,i) => padding + ((w - 2 * padding) / dataUs.length * i))
           .attr('fill', 'red')
           .attr('y', d => (h - padding) - (h - padding - yScale(d)))
      

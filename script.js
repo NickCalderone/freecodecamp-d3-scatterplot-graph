@@ -22,6 +22,12 @@ d3.json('https://pomber.github.io/covid19/timeseries.json', (error, response) =>
           .domain([0 , d3.max(dataUs, d => d['confirmed'])])
           .range([h - padding, padding])
           console.log(yScale(1), yScale(5000), yScale(100000))
+
+     const bandScale = d3.scaleBand()
+          .domain(dataUs.map((d,i) => i))
+          .range([padding, w - padding])
+     console.log('bandscale: ',bandScale(1), bandScale(13), bandScale(53740))
+
      svg
           .selectAll('rect')
           .data(dataUs.map(d => d['confirmed']))
@@ -29,9 +35,9 @@ d3.json('https://pomber.github.io/covid19/timeseries.json', (error, response) =>
           .append('rect')
           .attr('width', barWidth)
           .attr('height', d => h - padding - yScale(d))
-          .attr('x', (d,i) => padding + ((w - 2 * padding) / dataUs.length * i))
+          .attr('x', (d,i) => bandScale(i))
           .attr('fill', 'red')
-          .attr('y', d => (h - padding) - (h - padding - yScale(d)))
+          .attr('y', d => yScale(d))
      
      const xAxis = d3.axisBottom(xScale)
      const yAxis = d3.axisLeft(yScale)
